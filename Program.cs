@@ -5,7 +5,9 @@
 
 //Dictionary();
 
-HashSet();
+//HashSet();
+
+uppgift1();
 
 void Queue()
 {
@@ -64,5 +66,42 @@ void HashSet()
     foreach (var item in set)
     {
         Console.WriteLine(item);
+    }
+}
+
+void uppgift1()
+{
+    static Boolean isMatchingPair(char characther1, char characther2)
+    {
+        if (characther1 == '(' && characther2 == ')')
+            return true;
+        else if (characther1 == '{' && characther2 == '}')
+            return true;
+        else if (characther1 == '[' && characther2 == ']')
+            return true;
+        else
+            return false;
+    }
+
+    static Boolean areBracketsBalanced(char[] input)
+    {
+        Stack<char> st = new Stack<char>();
+
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] == '{' || input[i] == '(' || input[i] == '[') st.Push(input[i]);
+
+            if (input[i] == '}' || input[i] == ')' || input[i] == ']')
+            {
+                if (st.Count == 0) {
+                    return false;
+                }
+
+                else if (!isMatchingPair(st.Pop(), input[i]))
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
