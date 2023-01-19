@@ -7,7 +7,9 @@
 
 //HashSet();
 
-uppgift1();
+//uppgift1();
+
+uppgift2();
 
 void Queue()
 {
@@ -71,37 +73,45 @@ void HashSet()
 
 void uppgift1()
 {
-    static Boolean isMatchingPair(char characther1, char characther2)
-    {
-        if (characther1 == '(' && characther2 == ')')
-            return true;
-        else if (characther1 == '{' && characther2 == '}')
-            return true;
-        else if (characther1 == '[' && characther2 == ']')
-            return true;
-        else
-            return false;
-    }
+    string input = "[()]{}{[()()]()}";
 
-    static Boolean areBracketsBalanced(char[] input)
-    {
-        Stack<char> st = new Stack<char>();
+    Stack<char> st = new Stack<char>();
 
-        for (int i = 0; i < input.Length; i++)
-        {
-            if (input[i] == '{' || input[i] == '(' || input[i] == '[') st.Push(input[i]);
-
-            if (input[i] == '}' || input[i] == ')' || input[i] == ']')
-            {
-                if (st.Count == 0) {
-                    return false;
-                }
-
-                else if (!isMatchingPair(st.Pop(), input[i]))
-                {
-                    return false;
-                }
-            }
+    foreach(char c in input){
+        if(c == '{' || c == '(' || c == '[') st.Push(c);
+    else{
+        if(st.Count == 0){
+            Console.WriteLine("Obalancerad");
+            return;
         }
+        char stackChar = st.Pop();
+        bool b = false;
+        if (c == ')' && stackChar == '(')
+            b = true;
+        else if (c == '}' && stackChar == '{')
+            b = true;
+        else if (c == ']' && stackChar == '[')
+            b = true;
+        
+        if(!b){
+            Console.WriteLine("Obalanserad");
+            return;
+        }
+    }
+}
+if(st.Count == 0)
+    Console.WriteLine("Balanserad");
+else
+    Console.WriteLine("Obalanserad");
+}
+
+void uppgift2()
+{
+    string input = "*+12-34";
+    Stack<char> math = new Stack<char>();
+
+    for (char c = "*"; c = )
+    {
+        
     }
 }
