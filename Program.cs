@@ -11,6 +11,8 @@
 
 uppgift2();
 
+//uppgift3();
+
 void Queue()
 {
     Queue<int> queue = new Queue<int>();
@@ -107,11 +109,40 @@ else
 
 void uppgift2()
 {
-    string input = "*+12-34";
-    Stack<char> math = new Stack<char>();
+    Stack<int> stack = new Stack<int>();
 
-    for (char c = "*"; c = )
+    string input = "*+12-34";
+
+    for (int i = input.Length - 1; i >= 0; i--)
     {
-        
-    }
+        char c = input[i];
+        if (c == '-'){
+            int result = stack.Pop()- stack.Pop();
+            stack.Push(result);
+        }   
+        else if (c == '*'){
+            int result = stack.Pop()* stack.Pop();
+            stack.Push(result);
+        }  
+        else if (c == '+'){
+            int result = stack.Pop()+ stack.Pop();
+            stack.Push(result);
+        }
+        else{
+            stack.Push(int.Parse(c.ToString()));
+        }
+    }       
+
+    Console.Write(stack.Pop());
+}
+
+
+void uppgift3()
+{
+    int[] Ha = {1,6,4,1,4,2,7,4,6};
+
+    var set = new HashSet<int>();
+    var repeat = Ha.Where(i => !set.Add(i)).Distinct();
+
+    Console.WriteLine(string.Join(", ", repeat));
 }
